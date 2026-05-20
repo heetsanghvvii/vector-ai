@@ -1,48 +1,51 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { JetBrains_Mono } from 'next/font/google'
+import { Cormorant_Garamond, Montserrat, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({
-  variable: '--font-inter',
+const cormorant = Cormorant_Garamond({
+  variable: '--font-display',
   subsets: ['latin'],
+  weight: ['300', '400', '600', '700'],
+  display: 'swap',
+})
+
+const montserrat = Montserrat({
+  variable: '--font-sans',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
   display: 'swap',
 })
 
 const jetbrains = JetBrains_Mono({
-  variable: '--font-jetbrains',
+  variable: '--font-mono',
   subsets: ['latin'],
   display: 'swap',
 })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Vector AI — Your AI team. Fraction of the cost.',
-    template: '%s | Vector AI',
+    default: 'Partha AI — Your unfair advantage.',
+    template: '%s | Partha AI',
   },
   description:
-    'AI-powered content, research, design, and automation delivered in 24–48 hours. Serving clients in India, USA, and Europe.',
+    'Partha AI delivers agency-quality AI work in 24–48 hours. Content, research, decks, automation — at a fraction of the cost.',
   openGraph: {
     type: 'website',
-    siteName: 'Vector AI',
-    title: 'Vector AI — Your AI team. Fraction of the cost.',
+    siteName: 'Partha AI',
+    title: 'Partha AI — Your unfair advantage.',
     description:
-      'AI-powered content, research, design, and automation delivered in 24–48 hours.',
+      'Partha AI delivers agency-quality AI work in 24–48 hours. Content, research, decks, automation — at a fraction of the cost.',
   },
-  metadataBase: new URL('https://vectorai.co'),
+  metadataBase: new URL('https://partha.ai'),
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrains.variable} h-full`}
+      className={`${cormorant.variable} ${montserrat.variable} ${jetbrains.variable} h-full`}
     >
-      <body className="min-h-full bg-navy-900 text-white antialiased font-sans">
+      <body className="min-h-full bg-black-deep text-[#F0F0F0] antialiased font-sans">
         {children}
       </body>
     </html>

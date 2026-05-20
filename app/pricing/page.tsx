@@ -8,7 +8,7 @@ import { CTABanner } from '@/components/CTABanner'
 import { BUNDLES } from '@/content/services'
 
 export const metadata: Metadata = {
-  title: 'Pricing | Vector AI',
+  title: 'Pricing | Partha AI',
   description:
     'Every deliverable, every price. Transparent India and international pricing for content, research, creative, operations, data, and chatbot services.',
 }
@@ -22,36 +22,34 @@ export default function PricingPage() {
         <section className="relative overflow-hidden pt-32 sm:pt-36 pb-16 sm:pb-20 hero-radial">
           <div className="absolute inset-0 grid-bg opacity-50 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" />
           <div className="relative mx-auto max-w-7xl px-5 sm:px-8 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-electric/30 bg-electric/10 px-3 py-1 text-xs font-medium text-electric-200">
-              <span className="h-1.5 w-1.5 rounded-full bg-electric" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-3 py-1 text-xs font-medium text-gold">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-orange" />
               Pricing
             </div>
-            <h1 className="mt-6 text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight max-w-4xl mx-auto text-balance">
+            <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight max-w-4xl mx-auto text-balance text-[#F0F0F0]">
               Transparent pricing.{' '}
-              <span className="text-mute">No surprises.</span>
+              <span className="text-[#555555]">No surprises.</span>
             </h1>
-            <p className="mt-6 max-w-2xl mx-auto text-lg text-mute leading-relaxed">
+            <p className="mt-6 max-w-2xl mx-auto text-lg text-[#555555] leading-relaxed">
               Every deliverable, every price. Pick what you need or bundle for better value.
             </p>
           </div>
         </section>
 
-        {/* Filter bar + table */}
-        <section className="py-12 sm:py-16 border-t border-white/5">
+        {/* Filter + table */}
+        <section className="py-12 sm:py-16 border-t border-[#1e1e1e]">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <PricingFilter />
           </div>
         </section>
 
         {/* Bundle & Save */}
-        <section className="py-20 sm:py-24 border-t border-white/5 bg-navy-950/40">
+        <section className="py-20 sm:py-24 border-t border-[#1e1e1e] bg-[#080808]">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <div className="text-center max-w-2xl mx-auto mb-14">
-              <div className="text-xs font-mono uppercase tracking-[0.18em] text-electric">Bundle &amp; Save</div>
-              <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">Bigger scopes, better rates.</h2>
-              <p className="mt-4 text-mute">
-                Mix and match the deliverables you actually need. Save 15–25% over à la carte.
-              </p>
+              <div className="text-xs font-sans font-medium uppercase tracking-[3px] text-brand-orange mb-3">Bundle &amp; Save</div>
+              <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight text-[#F0F0F0]">Bigger scopes, better rates.</h2>
+              <p className="mt-4 text-[#555555]">Mix and match. Save 15–25% over à la carte.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -59,57 +57,49 @@ export default function PricingPage() {
                 <div
                   key={b.name}
                   className={`relative rounded-2xl p-7 flex flex-col ${
-                    b.featured ? 'bg-navy-800 glow-blue' : 'bg-navy-800/70 border border-white/[0.08]'
+                    b.featured ? 'bg-black-card glow-gold' : 'bg-black-card border border-[#1e1e1e]'
                   }`}
                 >
                   {b.featured && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 rounded-full bg-electric px-3 py-1 text-[11px] font-semibold tracking-wide text-white">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold tracking-wide text-black btn-primary">
                       BEST VALUE
                     </div>
                   )}
 
-                  <h3 className="text-xl font-semibold tracking-tight">{b.name}</h3>
+                  <h3 className="text-xl font-semibold tracking-tight text-[#F0F0F0]">{b.name}</h3>
                   <ul className="mt-5 space-y-2.5 text-sm">
                     {b.items.map((it) => (
                       <li key={it} className="flex items-start gap-2.5">
-                        <span
-                          className={`mt-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full ${
-                            b.featured ? 'bg-electric text-white' : 'bg-white/10 text-electric'
-                          }`}
-                        >
+                        <span className={`mt-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full ${b.featured ? 'bg-gradient-to-r from-brand-orange to-gold text-black' : 'bg-gold/10 text-gold'}`}>
                           <SmallIcon name="check" className="h-2.5 w-2.5" />
                         </span>
-                        <span className="text-white/85">{it}</span>
+                        <span className="text-[#F0F0F0]/70">{it}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-7 pt-6 border-t border-white/[0.08] space-y-3">
+                  <div className="mt-7 pt-6 border-t border-[#1e1e1e] space-y-3">
                     <div className="flex items-baseline justify-between">
-                      <span className="text-xs font-mono uppercase tracking-widest text-mute">India</span>
+                      <span className="text-xs font-mono uppercase tracking-widest text-[#555555]">India</span>
                       <span className="flex items-baseline gap-2">
-                        <span className="text-mute line-through text-sm">{b.originalInr}</span>
-                        <span className="text-2xl font-semibold text-electric">{b.bundleInr}</span>
+                        <span className="text-[#555555] line-through text-sm">{b.originalInr}</span>
+                        <span className="font-display text-2xl font-semibold text-gold">{b.bundleInr}</span>
                       </span>
                     </div>
                     <div className="flex items-baseline justify-between">
-                      <span className="text-xs font-mono uppercase tracking-widest text-mute">International</span>
+                      <span className="text-xs font-mono uppercase tracking-widest text-[#555555]">International</span>
                       <span className="flex items-baseline gap-2">
-                        <span className="text-mute line-through text-sm">{b.originalIntl}</span>
-                        <span className="text-2xl font-semibold text-electric">{b.bundleIntl}</span>
+                        <span className="text-[#555555] line-through text-sm">{b.originalIntl}</span>
+                        <span className="font-display text-2xl font-semibold text-gold">{b.bundleIntl}</span>
                       </span>
                     </div>
-                    <div className="text-[12px] text-electric-200 font-medium">
-                      Save {b.saveInr} / {b.saveIntl}
-                    </div>
+                    <div className="text-[12px] text-brand-orange font-medium">Save {b.saveInr} / {b.saveIntl}</div>
                   </div>
 
                   <Link
                     href="/#contact"
                     className={`mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-colors ${
-                      b.featured
-                        ? 'bg-electric hover:bg-electric-600 text-white'
-                        : 'border border-white/15 hover:border-white/35 hover:bg-white/5 text-white'
+                      b.featured ? 'btn-primary' : 'btn-outline'
                     }`}
                   >
                     Get this bundle

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { SERVICES_ORDER } from '@/content/services'
 
-const BASE = 'https://vectorai.co'
+const BASE = 'https://partha.ai'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const serviceUrls = SERVICES_ORDER.map((slug) => ({

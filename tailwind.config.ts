@@ -9,24 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          950: '#070B17',
-          900: '#0A0F1E',
-          850: '#0E1426',
-          800: '#111827',
-          700: '#1A2236',
-        },
-        electric: {
-          DEFAULT: '#3B7BF5',
-          400: '#5A93FF',
-          600: '#2A65D8',
-          200: '#A8C4FF',
-        },
-        mute: '#8892A4',
+        gold: '#C9A84C',
+        'brand-orange': '#FF6B00',
+        'black-deep': '#0D0D0D',
+        'black-card': '#111111',
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-jetbrains)', 'monospace'],
+        display: ['var(--font-display)', 'Georgia', 'serif'],
+        sans:    ['var(--font-sans)',    'system-ui', 'sans-serif'],
+        mono:    ['var(--font-mono)',    'monospace'],
       },
     },
   },

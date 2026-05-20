@@ -2,15 +2,13 @@ import Link from 'next/link'
 
 export function Logo({ className = '' }: { className?: string }) {
   return (
-    <Link href="/" className={`flex items-center gap-2.5 ${className}`}>
-      <span className="relative inline-flex h-8 w-8 items-center justify-center rounded-lg bg-electric/15 ring-1 ring-electric/40">
-        <svg viewBox="0 0 24 24" className="h-4 w-4 text-electric" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M3 4l9 16 9-16" />
-          <path d="M8 4l4 7 4-7" opacity=".55" />
-        </svg>
-      </span>
-      <span className="font-semibold tracking-tight text-[17px]">
-        Vector <span className="text-electric">AI</span>
+    <Link href="/" className={`flex items-center gap-3 ${className}`}>
+      {/* Place logo.png in /public/logo.png */}
+      <img src="/logo.png" alt="Partha AI" height={36} className="h-9 w-auto" />
+      <span
+        className="font-sans font-semibold text-[15px] text-[#F0F0F0] tracking-[3px] uppercase"
+      >
+        PARTHA <span className="text-[#FF6B00]">AI</span>
       </span>
     </Link>
   )

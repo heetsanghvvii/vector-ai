@@ -1,18 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy-950: #070B17;
-  --color-navy-900: #0A0F1E;
-  --color-navy-850: #0E1426;
-  --color-navy-800: #111827;
-  --color-navy-700: #1A2236;
-  --color-electric: #3B7BF5;
-  --color-electric-400: #5A93FF;
-  --color-electric-600: #2A65D8;
-  --color-electric-200: #A8C4FF;
-  --color-mute: #8892A4;
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), monospace;
+  /* Brand colors */
+  --color-gold:         #C9A84C;
+  --color-brand-orange: #FF6B00;
+  --color-black-deep:   #0D0D0D;
+  --color-black-card:   #111111;
+
+  /* Fonts */
+  --font-display: var(--font-display), Georgia, serif;
+  --font-sans:    var(--font-sans),    system-ui, sans-serif;
+  --font-mono:    var(--font-mono),    monospace;
 }
 
 html {
@@ -20,26 +18,52 @@ html {
 }
 
 body {
-  background: #0A0F1E;
-  color: #fff;
+  background: #0D0D0D;
+  color: #F0F0F0;
   -webkit-font-smoothing: antialiased;
 }
 
-.glow-blue {
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #FF6B00 0%, #C9A84C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient button */
+.btn-primary {
+  background: linear-gradient(135deg, #FF6B00 0%, #C9A84C 100%);
+  color: #000;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+.btn-primary:hover { opacity: 0.88; }
+
+/* Outline button */
+.btn-outline {
+  background: transparent;
+  color: #F0F0F0;
+  border: 1px solid #333;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.btn-outline:hover { border-color: #555; background: rgba(255,255,255,0.04); }
+
+.glow-gold {
   box-shadow:
-    0 0 0 1px rgba(59, 123, 245, 0.45),
-    0 20px 60px -20px rgba(59, 123, 245, 0.55),
+    0 0 0 1px rgba(201, 168, 76, 0.35),
+    0 20px 60px -20px rgba(255, 107, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .glow-soft {
-  box-shadow: 0 30px 90px -40px rgba(59, 123, 245, 0.35);
+  box-shadow: 0 30px 90px -40px rgba(201, 168, 76, 0.25);
 }
 
 .grid-bg {
   background-image:
-    linear-gradient(rgba(136, 146, 164, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(136, 146, 164, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
@@ -48,8 +72,8 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(60% 60% at 70% 30%, rgba(59, 123, 245, 0.18) 0%, transparent 60%),
-    radial-gradient(40% 40% at 10% 90%, rgba(59, 123, 245, 0.08) 0%, transparent 60%);
+    radial-gradient(60% 60% at 70% 30%, rgba(255, 107, 0, 0.06) 0%, transparent 60%),
+    radial-gradient(40% 40% at 10% 90%, rgba(201, 168, 76, 0.04) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -58,30 +82,30 @@ body {
 }
 
 .card-hover:hover {
-  border-color: rgba(59, 123, 245, 0.7);
-  background-color: #131c33;
+  border-color: rgba(201, 168, 76, 0.5);
+  background-color: #161616;
   box-shadow:
-    0 0 0 1px rgba(59, 123, 245, 0.25),
-    0 30px 60px -30px rgba(59, 123, 245, 0.45);
+    0 0 0 1px rgba(201, 168, 76, 0.15),
+    0 30px 60px -30px rgba(255, 107, 0, 0.25);
 }
 
 .dashed-line {
-  background-image: linear-gradient(90deg, rgba(136, 146, 164, 0.5) 50%, transparent 50%);
+  background-image: linear-gradient(90deg, rgba(201, 168, 76, 0.3) 50%, transparent 50%);
   background-size: 12px 1px;
   background-repeat: repeat-x;
   background-position: 0 50%;
 }
 
 .input-base {
-  background: #0E1426;
-  border: 1px solid #1F2A44;
-  color: #fff;
+  background: #0A0A0A;
+  border: 1px solid #1e1e1e;
+  color: #F0F0F0;
 }
 
 .input-base:focus {
   outline: none;
-  border-color: #3B7BF5;
-  box-shadow: 0 0 0 3px rgba(59, 123, 245, 0.18);
+  border-color: #C9A84C;
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
 }
 
 .toast-enter {
@@ -113,6 +137,6 @@ body {
 }
 
 ::selection {
-  background: #3B7BF5;
-  color: #fff;
+  background: #FF6B00;
+  color: #000;
 }

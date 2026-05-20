@@ -19,11 +19,8 @@ export function ContactForm() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
-
-    // Honeypot: silently drop if a bot filled the hidden field
     if (honeypotRef.current?.value) return
 
-    // Client-side validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
       setToastMsg('Please enter a valid email address.')
       return
@@ -36,8 +33,6 @@ export function ContactForm() {
     setStatus('loading')
 
     try {
-      // no-cors + text/plain is the standard pattern for Google Apps Script —
-      // we can't read the response but the POST goes through without a preflight
       await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -47,14 +42,11 @@ export function ContactForm() {
           email: form.email,
           company: form.company,
           message: form.message,
-          source: 'vectorai.co contact form',
+          source: 'partha.ai contact form',
           submittedAt: new Date().toISOString(),
         }),
       })
-    } catch {
-      // network failure — still show success so UX isn't broken;
-      // Apps Script delivery is best-effort
-    }
+    } catch { /* network failure — show success anyway */ }
 
     setStatus('success')
     setToastMsg(`Thanks ${form.name.split(' ')[0] || 'there'} — we'll be in touch within 24 hours.`)
@@ -64,8 +56,8 @@ export function ContactForm() {
 
   return (
     <>
-      {/* Honeypot — hidden from real users, bots will fill it */}
-      <form onSubmit={submit} className="rounded-2xl border border-white/[0.08] bg-navy-800/70 p-7 sm:p-9">
+      <form onSubmit={submit} className="rounded-2xl border border-[#1e1e1e] bg-black-card p-7 sm:p-9">
+        {/* Honeypot */}
         <input
           ref={honeypotRef}
           type="text"
@@ -78,7 +70,7 @@ export function ContactForm() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <label className="flex flex-col gap-1.5 text-sm">
-            <span className="text-mute font-medium">Name</span>
+            <span className="text-[#555555] font-medium tracking-wide">Name</span>
             <input
               required
               value={form.name}
@@ -89,7 +81,7 @@ export function ContactForm() {
             />
           </label>
           <label className="flex flex-col gap-1.5 text-sm">
-            <span className="text-mute font-medium">Email</span>
+            <span className="text-[#555555] font-medium tracking-wide">Email</span>
             <input
               required
               value={form.email}
@@ -102,18 +94,18 @@ export function ContactForm() {
         </div>
 
         <label className="mt-4 flex flex-col gap-1.5 text-sm">
-          <span className="text-mute font-medium">Company</span>
+          <span className="text-[#555555] font-medium tracking-wide">Company</span>
           <input
             value={form.company}
             onChange={set('company')}
             type="text"
-            placeholder="Analytical Engines Ltd."
+            placeholder="Acme Corp"
             className="input-base rounded-lg px-3.5 py-2.5 text-[15px] transition-shadow"
           />
         </label>
 
         <label className="mt-4 flex flex-col gap-1.5 text-sm">
-          <span className="text-mute font-medium">What do you need?</span>
+          <span className="text-[#555555] font-medium tracking-wide">How can we help?</span>
           <textarea
             required
             value={form.message}
@@ -127,7 +119,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="mt-6 w-full inline-flex items-center justify-center gap-2 bg-electric hover:bg-electric-600 disabled:opacity-60 text-white font-medium rounded-full px-5 py-3.5 transition-colors"
+          className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full px-5 py-3.5 text-sm disabled:opacity-60 btn-primary"
         >
           {status === 'loading' ? (
             <>
@@ -139,13 +131,13 @@ export function ContactForm() {
             </>
           ) : (
             <>
-              Send brief
+              Book a Call
               <Icon name="arrow" className="h-4 w-4" />
             </>
           )}
         </button>
 
-        <p className="mt-3 text-xs text-mute text-center">No spam. We reply within 24 hours.</p>
+        <p className="mt-3 text-xs text-[#555555] text-center">No spam. We reply within 24 hours.</p>
       </form>
 
       {toastMsg && <Toast msg={toastMsg} onDone={() => setToastMsg(null)} />}
